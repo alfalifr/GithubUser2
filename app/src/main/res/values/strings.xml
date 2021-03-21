@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Dicoding - GithubUser2</string>
+    <string name="template_text">This is text</string>
+    <string name="template_title">This is title</string>
+    <string name="search_uname">Search Username</string>
+    <string name="no_data">No data</string>
+    <string name="percent_number">%2.f %</string>
+    <string name="follower">Follower</string>
+    <string name="following">Following</string>
+    <string name="user_list">User List</string>
+    <string name="user_detail">User Detail</string>
+    <string name="toast_check_connection">Please check internet your connection</string>
+    <string name="set_language">Set Language</string>
+
+    <plurals name="repositories">
+        <item quantity="one">%d repository</item>
+        <item quantity="other">%d repositories</item>
+    </plurals>
+    <plurals name="followers">
+        <item quantity="one">%d follower</item>
+        <item quantity="other">%d followers</item>
+    </plurals>
+    <plurals name="followings">
+        <item quantity="one">%d following</item>
+        <item quantity="other">%d followings</item>
+    </plurals>
+</resources>

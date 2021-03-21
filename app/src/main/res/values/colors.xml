@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/purple_variant</color>
+    <color name="colorPrimaryDark">@color/purple_main</color>
+    <color name="colorPrimaryAccent">@color/white</color>
+
+    <color name="purple_main">#732E9A</color>
+    <color name="purple_variant">@color/purple_200</color>
+    <color name="blue_main">@color/blue_400</color>
+    <color name="blue_variant">@color/blue_600</color>
+
+    <color name="blue_100">#9AA3FF</color>
+    <color name="blue_300">#6975ED</color>
+    <color name="blue_400">#4C5DFF</color>
+    <color name="blue_600">#0E21D3</color>
+
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>

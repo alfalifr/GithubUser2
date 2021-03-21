@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Dicoding - GithubUser2</string>
+    <string name="template_text">Ini teks</string>
+    <string name="template_title">Ini judul</string>
+    <string name="search_uname">Cari Username</string>
+    <string name="no_data">Tidak ada data</string>
+    <string name="percent_number">%2.f %</string>
+    <string name="follower">Pengikut</string>
+    <string name="following">Mengikuti</string>
+    <string name="user_list">Daftar Pengguna</string>
+    <string name="user_detail">Rincian Pengguna</string>
+    <string name="toast_check_connection">Mohon cek koneksi internet anda</string>
+    <string name="set_language">Atur Bahasa</string>
+
+    <plurals name="repositories">
+        <item quantity="other">%d repositori</item>
+    </plurals>
+    <plurals name="followers">
+        <item quantity="other">%d pengikut</item>
+    </plurals>
+    <plurals name="followings">
+        <item quantity="other">%d mengikuti</item>
+    </plurals>
+</resources>
