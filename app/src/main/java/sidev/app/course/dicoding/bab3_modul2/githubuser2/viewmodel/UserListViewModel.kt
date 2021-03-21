@@ -4,18 +4,14 @@ import android.content.Context
 import androidx.lifecycle.*
 import com.android.volley.VolleyError
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.cancel
-import kotlinx.coroutines.cancelAndJoin
 import org.jetbrains.anko.runOnUiThread
 import org.json.JSONArray
 import org.json.JSONObject
 import sidev.app.course.dicoding.bab3_modul2.githubuser2.model.User
-import sidev.app.course.dicoding.bab3_modul2.githubuser2.model.UserDetail
 import sidev.app.course.dicoding.bab3_modul2.githubuser2.util.Const
 import sidev.app.course.dicoding.bab3_modul2.githubuser2.util.Util
 import sidev.lib.`val`.SuppressLiteral
 import sidev.lib.android.std.tool.util.`fun`.loge
-import java.lang.IllegalStateException
 
 class UserListViewModel(private val ctx: Context): ViewModel() {
     companion object {
@@ -57,8 +53,6 @@ class UserListViewModel(private val ctx: Context): ViewModel() {
         doOnPreAsyncTask()
         runningJob = Util.httpGet(ctx, url, ::checkNetworkException) { _, content ->
             val list= mutableListOf<User>()
-            //loge("VM url= $url content= '$content'")
-            //loge("content.substring(8500 - 10, 8500 + 100)= ${content.substring(8500 - 10, 8500 + 100)}")
             val arr= JSONArray(content.trim())
             for(i in 0 until arr.length()){
                 val obj= arr.getJSONObject(i)

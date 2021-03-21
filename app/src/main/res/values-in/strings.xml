@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Dicoding - GithubUser2</string>
+    <string name="app_name">GithubUser2</string>
     <string name="template_text">Ini teks</string>
     <string name="template_title">Ini judul</string>
     <string name="search_uname">Cari Username</string>

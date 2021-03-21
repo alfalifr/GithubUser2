@@ -57,7 +57,8 @@ class UserListFrag: Fragment(), TextWatcher {
                 adapter= adp
                 layoutManager= LinearLayoutManager(requireContext())
             }
-            etUname.addTextChangedListener(this@UserListFrag)
+            //etUname.addTextChangedListener(this@UserListFrag)
+            showSearchBar()
             inputLayout.hint = getString(R.string.search_uname)
         }
 
@@ -119,7 +120,13 @@ class UserListFrag: Fragment(), TextWatcher {
 
     private fun showSearchBar(show: Boolean = true){
         binding.apply {
-            inputLayout.visibility = if(show) View.VISIBLE else View.GONE
+            if(show){
+                inputLayout.visibility = View.VISIBLE
+                etUname.addTextChangedListener(this@UserListFrag)
+            } else {
+                inputLayout.visibility = View.GONE
+                etUname.removeTextChangedListener(this@UserListFrag)
+            }
         }
     }
 

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Dicoding - GithubUser2</string>
+    <string name="app_name">GithubUser2</string>
     <string name="template_text">This is text</string>
     <string name="template_title">This is title</string>
     <string name="search_uname">Search Username</string>

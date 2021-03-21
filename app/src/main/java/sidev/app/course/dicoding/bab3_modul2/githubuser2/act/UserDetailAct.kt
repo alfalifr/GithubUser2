@@ -5,7 +5,6 @@ import android.util.TypedValue
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayoutMediator
 import sidev.app.course.dicoding.bab3_modul2.githubuser2.R
@@ -15,9 +14,7 @@ import sidev.app.course.dicoding.bab3_modul2.githubuser2.model.User
 import sidev.app.course.dicoding.bab3_modul2.githubuser2.util.Const
 import sidev.app.course.dicoding.bab3_modul2.githubuser2.util.Util
 import sidev.app.course.dicoding.bab3_modul2.githubuser2.viewmodel.UserDetailViewModel
-import sidev.lib.android.std.tool.util._ResUtil
 import sidev.lib.android.std.tool.util._ViewUtil
-import sidev.lib.android.std.tool.util.`fun`.loge
 
 class UserDetailAct: AppCompatActivity() {
     private lateinit var data: User
@@ -40,30 +37,23 @@ class UserDetailAct: AppCompatActivity() {
 
         // It's obvious to use !! since `data` should not be null.
         data= intent.getParcelableExtra(Const.DATA)!!
-        loge("USerDetail user= $data")
 
         binding.apply {
-            val icPadding= _ViewUtil.dpToPx(7f, this@UserDetailAct)
-
-            tvCompany
-
-            loge("0x7f070086 == R.drawable.ic_company = ${0x7f070086 == R.drawable.ic_company}")
+            val icPadding= _ViewUtil.dpToPx(7f, this@UserDetailAct).toInt()
 
             tvLocation.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_location_, 0, 0, 0)
             tvCompany.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_company, 0, 0, 0)
             tvFollower.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_follower, 0, 0, 0)
             tvRepository.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_repo, 0, 0, 0)
 
-            tvCompany.compoundDrawablePadding = icPadding.toInt()
-            tvLocation.compoundDrawablePadding = icPadding.toInt()
-            tvFollower.compoundDrawablePadding = icPadding.toInt()
-            tvRepository.compoundDrawablePadding = icPadding.toInt()
+            tvCompany.compoundDrawablePadding = icPadding
+            tvLocation.compoundDrawablePadding = icPadding
+            tvFollower.compoundDrawablePadding = icPadding
+            tvRepository.compoundDrawablePadding = icPadding
 
             val value = TypedValue()
             theme.resolveAttribute(R.attr.colorOnPrimary, value, true)
             val colorRes= value.data
-
-            loge("colorRes= $colorRes")
 
             Util.setDrawableTint(tvCompany, colorRes)
             Util.setDrawableTint(tvLocation, colorRes)
