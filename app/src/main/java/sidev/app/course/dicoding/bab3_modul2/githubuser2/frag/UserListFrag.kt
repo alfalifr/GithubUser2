@@ -7,13 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import org.jetbrains.anko.singleLine
 import sidev.app.course.dicoding.bab3_modul2.githubuser2.R
 import sidev.app.course.dicoding.bab3_modul2.githubuser2.act.UserDetailAct
 import sidev.app.course.dicoding.bab3_modul2.githubuser2.adp.UserAdp
@@ -28,7 +26,7 @@ class UserListFrag: Fragment(), TextWatcher {
     private lateinit var binding: PageListBinding
     private lateinit var adp: UserAdp
     private val vm: UserListViewModel by lazy {
-        UserListViewModel.getInstance(this, requireContext())
+        UserListViewModel.getInstance(this, requireContext(), args?.owner == null)
     }
     private var runningSearchJob: Job?= null
 
@@ -58,8 +56,6 @@ class UserListFrag: Fragment(), TextWatcher {
                 adapter= adp
                 layoutManager= LinearLayoutManager(requireContext())
             }
-            //etUname.addTextChangedListener(this@UserListFrag)
-            showSearchBar()
             inputLayout.hint = getString(R.string.search_uname)
         }
 
@@ -84,14 +80,7 @@ class UserListFrag: Fragment(), TextWatcher {
                     )
                 }
                 binding.rv.isNestedScrollingEnabled = false
-                showSearchBar(false)
-            } ?: run {
-                vm.downloadInitDataList()
-                showSearchBar()
             }
-        } ?: run {
-            vm.downloadInitDataList()
-            showSearchBar()
         }
     }
 
@@ -129,6 +118,23 @@ class UserListFrag: Fragment(), TextWatcher {
                 etUname.removeTextChangedListener(this@UserListFrag)
             }
         }
+    }
+
+    /**
+     * Called when all saved state has been restored into the view hierarchy
+     * of the fragment.  This can be used to do initialization based on saved
+     * state that you are letting the view hierarchy track itself, such as
+     * whether check box widgets are currently checked.  This is called
+     * after [.onActivityCreated] and before
+     * [.onStart].
+     *
+     * @param savedInstanceState If the fragment is being re-created from
+     * a previous saved state, this is the state.
+     */
+    override fun onViewStateRestored(savedInstanceState: Bundle?) {
+        super.onViewStateRestored(savedInstanceState)
+        showNoData(false)
+        showSearchBar(args?.owner == null)
     }
 
     /*

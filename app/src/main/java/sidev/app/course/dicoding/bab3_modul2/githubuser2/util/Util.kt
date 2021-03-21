@@ -14,8 +14,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import org.jetbrains.anko.runOnUiThread
+import org.jetbrains.anko.toast
 import org.json.JSONObject
 import sidev.app.course.dicoding.bab3_modul2.githubuser2.R
+import sidev.lib.android.std.tool.util._NetworkUtil
 import sidev.lib.android.std.tool.util._ViewUtil
 import sidev.lib.structure.data.value.varOf
 
@@ -37,11 +40,18 @@ object Util {
         c: Context,
         url: String,
         onError: ((code: Int, e: VolleyError) -> Unit)?= null,
+        //onNetworkNotActive: ((e: VolleyError) -> Unit)?= null,
         onResponse: (code: Int, content: String) -> Unit,
     ) : Job = GlobalScope.launch(Dispatchers.IO) {
-        Volley.newRequestQueue(c).add(createVolleyRequest(
-            Request.Method.GET, url, onError, onResponse
-        ))
+        if(_NetworkUtil.isNetworkActive(c)){
+            Volley.newRequestQueue(c).add(createVolleyRequest(
+                Request.Method.GET, url, onError, onResponse
+            ))
+        } else {
+            c.runOnUiThread {
+                toast(c.getString(R.string.toast_check_connection))
+            }
+        }
     }
 
     fun createVolleyRequest(
@@ -61,7 +71,10 @@ object Util {
                 response?.also {
                     code.value= it.statusCode
                     if(it.statusCode.toString().startsWith("4")){
-                        val result = Response.success(response.headers?.get("Content-Length"), HttpHeaderParser.parseCacheHeaders(response));
+                        val result = Response.success(
+                            response.headers?.get("Content-Length"),
+                            HttpHeaderParser.parseCacheHeaders(response)
+                        )
                         return result
                     }
                 }

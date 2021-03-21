@@ -19,6 +19,8 @@
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
             android:hint="@string/template_title"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             app:hintTextColor="@color/colorPrimary"
             app:endIconMode="clear_text">
             <com.google.android.material.textfield.TextInputEditText
@@ -74,6 +76,7 @@
     <TextView
         android:id="@+id/tv_no_data"
         style="@style/TextView"
+        android:padding="10dp"
         android:layout_centerInParent="true"
         android:text="@string/no_data"
         android:textSize="20sp"

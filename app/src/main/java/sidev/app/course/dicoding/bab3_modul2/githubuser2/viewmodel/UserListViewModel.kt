@@ -13,20 +13,35 @@ import sidev.app.course.dicoding.bab3_modul2.githubuser2.util.Util
 import sidev.lib.`val`.SuppressLiteral
 import sidev.lib.android.std.tool.util.`fun`.loge
 
-class UserListViewModel(private val ctx: Context): ViewModel() {
+class UserListViewModel(
+    private val ctx: Context,
+    private val defaultDownloadData: Boolean = true,
+): ViewModel() {
+
     companion object {
-        fun getInstance(owner: ViewModelStoreOwner, ctx: Context): UserListViewModel = ViewModelProvider(
+        fun getInstance(
+            owner: ViewModelStoreOwner,
+            ctx: Context,
+            defaultDownloadData: Boolean = true
+        ): UserListViewModel = ViewModelProvider(
             owner,
             object: ViewModelProvider.Factory {
                 @Suppress(SuppressLiteral.UNCHECKED_CAST)
-                override fun <T : ViewModel?> create(modelClass: Class<T>): T = UserListViewModel(ctx) as T
+                override fun <T : ViewModel?> create(modelClass: Class<T>): T =
+                    UserListViewModel(ctx, defaultDownloadData) as T
             }
         ).get(UserListViewModel::class.java)
     }
 
     private val _dataList = MutableLiveData<MutableList<User>>()
     val dataList: LiveData<out List<User>>
-        get()= _dataList
+        get(){
+            val liveData= _dataList
+            // Init value
+            if(liveData.value == null && defaultDownloadData)
+                downloadInitDataList()
+            return _dataList
+        }
     private var runningJob: Job?= null
 
     /**
