@@ -21,6 +21,7 @@ object Const {
     }
 
     const val DATA = "data"
+    private const val URL_USER_SEARCH = "https://api.github.com/search/users?q="
     const val URL_USER_LIST = "https://api.github.com/users"
     const val KEY_USERNAME = "login"
     const val KEY_AVATAR = "avatar_url"
@@ -30,9 +31,11 @@ object Const {
     const val KEY_FOLLOWING = "following"
     const val KEY_COMPANY = "company"
     const val KEY_LOCATION = "location"
+    const val KEY_ITEMS = "items"
 
     fun getUserListUrl(count: Int)= "$URL_USER_LIST?per_page=$count"
     fun getUserUrl(username: String)= "$URL_USER_LIST/$username"
     fun getUserFollowerListUrl(username: String)= "${getUserUrl(username)}/followers"
     fun getUserFollowingListUrl(username: String)= "${getUserUrl(username)}/following"
+    fun getUserSearchUrl(keyword: String)= "$URL_USER_SEARCH$keyword"
 }

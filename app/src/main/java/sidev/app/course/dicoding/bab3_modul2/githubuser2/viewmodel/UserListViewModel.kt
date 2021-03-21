@@ -87,13 +87,17 @@ class UserListViewModel(
     fun searchUser(uname: String){
         cancelJob()
         doOnPreAsyncTask()
-        runningJob = Util.httpGet(ctx, Const.getUserUrl(uname), ::checkNetworkException) { _, content ->
-            JSONObject(content).apply {
-                val user= User(
-                    getString(Const.KEY_USERNAME),
-                    getString(Const.KEY_AVATAR),
-                )
-                _dataList.postValue(mutableListOf(user))
+        runningJob = Util.httpGet(ctx, Const.getUserSearchUrl(uname), ::checkNetworkException) { _, content ->
+            JSONObject(content).getJSONArray(Const.KEY_ITEMS).apply {
+                val list= mutableListOf<User>()
+                for(i in 0 until length()){
+                    val obj= getJSONObject(i)
+                    list += User(
+                        obj.getString(Const.KEY_USERNAME),
+                        obj.getString(Const.KEY_AVATAR),
+                    )
+                }
+                _dataList.postValue(list)
             }
         }
     }
