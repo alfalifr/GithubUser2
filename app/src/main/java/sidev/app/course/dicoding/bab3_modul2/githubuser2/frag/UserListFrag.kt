@@ -13,6 +13,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import org.jetbrains.anko.singleLine
 import sidev.app.course.dicoding.bab3_modul2.githubuser2.R
 import sidev.app.course.dicoding.bab3_modul2.githubuser2.act.UserDetailAct
 import sidev.app.course.dicoding.bab3_modul2.githubuser2.adp.UserAdp

@@ -19,15 +19,15 @@
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
             android:hint="@string/template_title"
-            app:hintTextColor="@color/colorPrimary">
-            <EditText
-                style="@style/DefaultConstraint"
+            app:hintTextColor="@color/colorPrimary"
+            app:endIconMode="clear_text">
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_uname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autofillHints="@string/template_title"
-                android:inputType="text"
-                android:labelFor="@id/input_layout"/>
+                android:maxLines="1"
+                android:singleLine="true"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.recyclerview.widget.RecyclerView
