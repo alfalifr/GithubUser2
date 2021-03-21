@@ -45,8 +45,12 @@ class UserDetailAct: AppCompatActivity() {
         binding.apply {
             val icPadding= _ViewUtil.dpToPx(7f, this@UserDetailAct)
 
-            tvCompany.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_company, 0, 0, 0)
+            tvCompany
+
+            loge("0x7f070086 == R.drawable.ic_company = ${0x7f070086 == R.drawable.ic_company}")
+
             tvLocation.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_location_, 0, 0, 0)
+            tvCompany.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_company, 0, 0, 0)
             tvFollower.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_follower, 0, 0, 0)
             tvRepository.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_repo, 0, 0, 0)
 

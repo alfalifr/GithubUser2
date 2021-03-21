@@ -81,6 +81,7 @@ class UserListFrag: Fragment(), TextWatcher {
                         detailMsg = "`getArguments().getType()` ($type) has value outside range of Const.UserListType"
                     )
                 }
+                binding.rv.isNestedScrollingEnabled = false
                 showSearchBar(false)
             } ?: run {
                 vm.downloadInitDataList()
