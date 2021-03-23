@@ -4,7 +4,7 @@ def props = new Properties()
 file("setting.properties").withInputStream { props.load(it) }
 
 def githubUser= props.githubUser
-def githubApiKey= props.githubApi
+def githubApiKey= props.githubKey
 def githubRepo= props.githubRepo
 
 buildscript {

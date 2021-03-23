@@ -71,11 +71,10 @@ object Util {
                 response?.also {
                     code.value= it.statusCode
                     if(it.statusCode.toString().startsWith("4")){
-                        val result = Response.success(
+                        return Response.success(
                             response.headers?.get("Content-Length"),
                             HttpHeaderParser.parseCacheHeaders(response)
                         )
-                        return result
                     }
                 }
                 return super.parseNetworkResponse(response)
