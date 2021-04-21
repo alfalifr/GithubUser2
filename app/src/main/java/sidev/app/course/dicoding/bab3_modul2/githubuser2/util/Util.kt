@@ -40,7 +40,6 @@ object Util {
         c: Context,
         url: String,
         onError: ((code: Int, e: VolleyError) -> Unit)?= null,
-        //onNetworkNotActive: ((e: VolleyError) -> Unit)?= null,
         onResponse: (code: Int, content: String) -> Unit,
     ) : Job = GlobalScope.launch(Dispatchers.IO) {
         if(_NetworkUtil.isNetworkActive(c)){
